@@ -1,0 +1,37 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: serverless-test
+
+frameworkVersion: '2'
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: python3.7
+  stage: dev
+  profile: zzqadmin
+  region: us-east-1
+  timeout: 30
+  apiGateway:
+    restApiId: kzi8ozq2d8
+    restApiRootResourceId: 84jtf18ul4
+  environment:
+    MY_STAGE: dev
+
+# The `functions` block defines what code to deploy
+functions:
+  testLambda:
+    name: simple_lambda_python
+    description: 测试lambda
+    handler: test_lambda.lambda_handler
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: /echo
+          method: post
+          cors: true
