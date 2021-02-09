@@ -24,6 +24,7 @@ provider:
     restApiRootResourceId: 84jtf18ul4
   environment:
     MY_STAGE: dev
+    AUTHOR: zzq
 
 # The `functions` block defines what code to deploy
 functions:

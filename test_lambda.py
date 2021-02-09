@@ -4,29 +4,29 @@ import os
 
 def lambda_handler(request, context):
     stage = os.environ["MY_STAGE"]
+    author = os.environ["AUTHOR"]
+    data = {
+        'env': {
+            'stage': stage,
+            'author': author
+        }
+    }
     try:
         body = json.loads(request["body"])
         msg = body["msg"]
-        return {
-            'statusCode': 200,
-            'body': json.dumps({
-                'code': 0,
-                'message': 'SUCCESS',
-                'data': {
-                    'stage': stage,
-                    'echo': msg
-                }
-            })
-        }
+        code = 0
+        message = 'SUCCESS'
+        data['echo'] = msg
     except Exception as e:
-        return {
-            'statusCode': 200,
-            'body': json.dumps({
-                'code': 4001,
-                'message': 'FAILED',
-                'data': {
-                    'stage': stage,
-                    'err': 'no msg received...'
-                }
-            })
-        }
+        code = 4001
+        message = 'FAILED'
+        data['err'] = 'no msg received...'
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps({
+            'code': code,
+            'message': message,
+            'data': data
+        })
+    }
