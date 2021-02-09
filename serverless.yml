@@ -4,10 +4,12 @@
 # Serverless.yml is the configuration the CLI
 # uses to deploy your code to your provider of choice
 
+###############################################################################################
+# example: https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+###############################################################################################
+
 # The `service` block is the name of the service
 service: serverless-test
-
-frameworkVersion: '2'
 
 # The `provider` block defines where your service will be deployed
 provider:
