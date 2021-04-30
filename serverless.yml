@@ -20,21 +20,30 @@ provider:
   region: us-east-1
   timeout: 30
   apiGateway:
-    restApiId: kzi8ozq2d8
-    restApiRootResourceId: 84jtf18ul4
+    restApiId: qw9ix93pt6
+    restApiRootResourceId: rb95ljhya8
   environment:
     MY_STAGE: dev
     AUTHOR: zzq
 
 # The `functions` block defines what code to deploy
 functions:
-  testLambda:
-    name: simple_lambda_python
-    description: 测试lambda
-    handler: test_lambda.lambda_handler
+  echo:
+    name: python_lambda_echo
+    description: 测试lambda-echo
+    handler: echo.lambda_handler
     # The `events` block defines how to trigger the handler.helloWorld code
     events:
       - http:
           path: /echo
+          method: post
+          cors: true
+  test:
+    name: python_lambda_test
+    description: 测试lambda-test
+    handler: test.lambda_handler
+    events:
+      - http:
+          path: /test
           method: post
           cors: true
