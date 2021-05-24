@@ -4,6 +4,7 @@ import os
 
 def lambda_handler(request, context):
     print(request)
+    print(context)
 
     return {
         'statusCode': 200,
