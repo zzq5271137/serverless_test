@@ -13,13 +13,15 @@ service: serverless-test
 
 # The `provider` block defines where your service will be deployed
 provider:
+  lambdaHashingVersion: 20201221
   name: aws
   runtime: python3.7
   stage: dev
   profile: zzqadmin
   region: us-east-1
   timeout: 30
-  role: arn:aws:iam::565988171269:role/my_lambda_role
+  iam:
+    role: arn:aws:iam::565988171269:role/my_lambda_role
   apiGateway:
     restApiId: qw9ix93pt6
     restApiRootResourceId: rb95ljhya8
